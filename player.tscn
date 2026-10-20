@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dydy08duw2lhf"]
 
-[ext_resource type="Script" uid="uid://b7hxr74rtdxc7" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://b7hxr74rtdxc7" path="res://scripts/character/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://bdqjq5dpu6c3b" path="res://sprites/littleman.png" id="2_onrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdahy"]

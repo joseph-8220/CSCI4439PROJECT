@@ -1,0 +1,56 @@
+[gd_scene format=4 uid="uid://dme5lp4lyf3gp"]
+
+[ext_resource type="PackedScene" uid="uid://dydy08duw2lhf" path="res://player.tscn" id="1_bb12l"]
+[ext_resource type="Script" uid="uid://d35d2iyyaa71v" path="res://scripts/weapons/melee.gd" id="2_o6stw"]
+[ext_resource type="Texture2D" uid="uid://dft2o1ekjguua" path="res://sprites/walldemo.png" id="2_qpjuv"]
+[ext_resource type="Texture2D" uid="uid://btjmyt80n6nvh" path="res://sprites/spritesheet-Sheet.png" id="3_ak2r3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fy505"]
+texture = ExtResource("2_qpjuv")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qpjuv"]
+sources/0 = SubResource("TileSetAtlasSource_fy505")
+
+[node name="area" type="Node2D" unique_id=2043200640]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=206528644]
+scale = Vector2(3.5, 3.5)
+zoom = Vector2(3.5, 3.5)
+
+[node name="player" parent="." unique_id=53312238 instance=ExtResource("1_bb12l")]
+top_level = true
+
+[node name="sword_weapon" type="Node2D" parent="player" unique_id=1891510682]
+position = Vector2(-275, -329)
+script = ExtResource("2_o6stw")
+damage = 5
+hit_force = 150.0
+range = null
+fire_rate = null
+
+[node name="Sprite2D" type="Sprite2D" parent="player/sword_weapon" unique_id=1359097786]
+position = Vector2(287, 329)
+texture = ExtResource("3_ak2r3")
+hframes = 8
+frame = 7
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=648642937]
+visible = false
+tile_map_data = PackedByteArray("AAANABIAAAAAAAMAAAAMABIAAAAAAAMAAAAMABEAAAAAAAMAAAANABEAAAAAAAMAAAANABAAAAAAAAMAAAAMABAAAAAAAAMAAAAOABAAAAAAAAMAAAAOABEAAAAAAAMAAAAOABIAAAAAAAMAAAAOABMAAAAAAAMAAAANABMAAAAAAAMAAAAMABMAAAAAAAMAAAAPABMAAAAAAAMAAAAPABIAAAAAAAMAAAAPABEAAAAAAAMAAAAPABAAAAAAAAMAAAAPABQAAAAAAAMAAAAOABQAAAAAAAMAAAANABQAAAAAAAMAAAAMABQAAAAAAAMAAAAQABQAAAABAAAAAAAQABMAAAABAAAAAAAQABIAAAABAAAAAAAQABEAAAABAAAAAAAQABAAAAABAAAAAAAPABUAAAADAAAAAAAOABUAAAADAAAAAAANABUAAAADAAAAAAAMABUAAAADAAAAAAAQABUAAAABAAEAAAALAA8AAAADAAEAAAALABUAAAACAAAAAAAQAA8AAAACAAIAAAAPAA8AAAABAAIAAAAOAA8AAAABAAIAAAANAA8AAAABAAIAAAAMAA8AAAABAAIAAAALABAAAAADAAIAAAALABEAAAADAAIAAAALABIAAAADAAIAAAALABMAAAADAAIAAAALABQAAAADAAIAAAA=")
+tile_set = SubResource("TileSet_qpjuv")
