@@ -10,6 +10,9 @@ func _on_start_pressed() -> void:
 	$buttonmanager.hide()
 	get_tree().paused = false
 
+func _process(delta):
+	if Input.is_action_just_pressed("escape"):
+		_on_start_pressed()
 
 
 func _on_quit_pressed() -> void:
