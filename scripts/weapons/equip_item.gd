@@ -11,11 +11,11 @@ func _process(delta : float):
 func set_aim_direction (aim_dir : Vector2):
 	aim_angle = aim_dir.angle()
 
-func _equip():
-	pass
-
-func _unequip():
-	pass
+#func _equip():
+	#pass
+#
+#func _unequip():
+	#pass
 
 func _try_use() -> bool:
 	if not can_use:

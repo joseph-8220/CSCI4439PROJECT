@@ -4,16 +4,17 @@ extends character
 
 # all of these variables will be modifiable through items. 
 # do note that dash power affects the velocity, duration, of the dash
-@export var can_dash : bool
 @export var dash_power : float
 @export var dash_cd : float
+@export var friction_coeff : float
 
 #not these ones though lol
-@export var friction_coeff : float
+@export var can_dash : bool
 @export var last_dash_time : float
 @export var input_direction : Vector2
 @export var dash_direction : Vector2
 @export var is_dashing : bool
+@export var current_weapon : int
 func _ready():
 	movespeed = 120
 	can_dash = true
@@ -22,13 +23,13 @@ func _ready():
 	is_dashing = false
 	friction_coeff = 10
 	dash_direction = Vector2.ZERO
+	current_weapon = 0
 func get_input():
-	#if not Input.is_action_pressed("shift"):
-		#look_at(get_global_mouse_position())
-	# ^possible option? would give the user the option to lock their aim angle.
-	# not sure how useful it would be, however.
+	var mouse_pos = get_global_mouse_position()
+	look_at(mouse_pos)
+	var aim_direction = (mouse_pos - global_position).normalized()
+	$equip_weapon.set_aim_direction(aim_direction)
 	
-	look_at(get_global_mouse_position())
 	input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * movespeed
 	if Input.is_action_pressed('shift'):
@@ -38,7 +39,7 @@ func get_input():
 				print("dash used")
 	# placeholder, will be replaced with the weapon system
 	if Input.is_action_pressed('click'):
-		print("projectile fired")
+		$equip_weapon._try_use()
 	
 	
 func _try_dash() -> bool:
@@ -62,6 +63,8 @@ func _dash():
 	last_dash_time = Time.get_unix_time_from_system()
 
 func _physics_process(delta):
+	if get_tree().paused:
+		return
 	input_direction = Input.get_vector("left", "right", "up", "down")
 	if is_dashing : 
 		velocity = velocity.lerp(dash_direction * movespeed, friction_coeff * delta)
