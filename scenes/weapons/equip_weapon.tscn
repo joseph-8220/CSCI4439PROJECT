@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://cllecdjbygkyk"]
 
-[ext_resource type="Script" uid="uid://dwmq0yet1doc5" path="res://equip_weapon.gd" id="1_y1pnd"]
+[ext_resource type="Script" uid="uid://dwmq0yet1doc5" path="res://scripts/weapons/equip_weapon.gd" id="1_y1pnd"]
 [ext_resource type="PackedScene" uid="uid://dvivh5oe6ik82" path="res://scenes/weapons/pistol.tscn" id="2_x8814"]
-[ext_resource type="Script" uid="uid://d0cddnuoukmyt" path="res://scripts/weapons/pistol.gd" id="3_ioigt"]
 
 [node name="equip_weapon" type="Node2D" unique_id=1105878114]
 script = ExtResource("1_y1pnd")
 
 [node name="Pistol" parent="." unique_id=847540433 instance=ExtResource("2_x8814")]
-script = ExtResource("3_ioigt")

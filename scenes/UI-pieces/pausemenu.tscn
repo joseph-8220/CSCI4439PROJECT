@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c002ln5dmrmg8"]
 
-[ext_resource type="Script" uid="uid://ddmd8f0bxja2q" path="res://pausemenu.gd" id="1_r33we"]
-[ext_resource type="Shader" uid="uid://thylu5ba218t" path="res://new_shader.gdshader" id="2_8ljkb"]
+[ext_resource type="Script" uid="uid://ddmd8f0bxja2q" path="res://scripts/ui/pausemenu.gd" id="1_r33we"]
+[ext_resource type="Shader" uid="uid://thylu5ba218t" path="res://scripts/ui/new_shader.gdshader" id="2_8ljkb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8p87e"]
 shader = ExtResource("2_8ljkb")
@@ -89,8 +89,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -575.5
 offset_top = -320.5
-offset_right = 575.5
-offset_bottom = 320.5
+offset_right = 580.5
+offset_bottom = 327.5
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.47843137, 0.47843137, 0.5019608, 0)

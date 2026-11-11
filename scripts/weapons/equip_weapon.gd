@@ -1,6 +1,9 @@
 extends Node2D
 
-@export var fire_rate : float = 0.5
+@export var default_fire_rate : float = 0.5
+@export var default_damage: int = 1
+var fire_rate: float = 0.5
+var damage: int = 1
 var last_use_time : float
 var aim_angle : float
 var can_use : bool = true
@@ -10,7 +13,10 @@ func _process(delta : float):
 func set_aim_direction (aim_dir : Vector2):
 	aim_angle = aim_dir.angle()
 
-func _equip():
+func _equip(weapon):
+	default_fire_rate = weapon.fire_rate # + damage_modifier
+	default_damage = weapon.damage # * fire_rate_modifier
+	
 	pass
 
 func _unequip():
@@ -26,5 +32,5 @@ func _try_use() -> bool:
 	return true
 
 func _use():
-	$Pistol.use()
+	$Pistol.use(damage)
 	

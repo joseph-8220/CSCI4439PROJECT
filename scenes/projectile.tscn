@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://6jpgiw7mghkl"]
 
-[ext_resource type="Script" uid="uid://bxa5wxwaa7b2o" path="res://scripts/projectile.gd" id="1_q3m7n"]
-[ext_resource type="Texture2D" uid="uid://cusie3qq3guao" path="res://sprites/projectile.png" id="2_softn"]
+[ext_resource type="Script" uid="uid://bxa5wxwaa7b2o" path="res://scripts/projectiles/projectile.gd" id="1_q3m7n"]
+[ext_resource type="Texture2D" uid="uid://qdtkrywj1cqu" path="res://sprites/sheets.png" id="2_q3m7n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
-size = Vector2(3, 3)
+size = Vector2(6, 6)
 
 [node name="projectile" type="CharacterBody2D" unique_id=482377304]
 collision_layer = 4
@@ -12,8 +12,10 @@ collision_mask = 9
 script = ExtResource("1_q3m7n")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1190166991]
-scale = Vector2(0.24999999, 0.25000003)
-texture = ExtResource("2_softn")
+texture = ExtResource("2_q3m7n")
+hframes = 19
+vframes = 2
+frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=838073959]
 shape = SubResource("RectangleShape2D_cc37w")

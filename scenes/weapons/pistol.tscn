@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvivh5oe6ik82"]
 
-[ext_resource type="Script" uid="uid://bamnjwmb6tg31" path="res://pistol.gd" id="1_r3071"]
+[ext_resource type="Script" uid="uid://d0cddnuoukmyt" path="res://scripts/weapons/pistol.gd" id="1_r3071"]
 [ext_resource type="Texture2D" uid="uid://btjmyt80n6nvh" path="res://sprites/spritesheet-Sheet.png" id="2_60a84"]
 
 [node name="Pistol" type="CharacterBody2D" unique_id=2043107661]

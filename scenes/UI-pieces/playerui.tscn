@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://53ifclt6hb2y"]
+
+[node name="playerui" type="Control" unique_id=1887862034]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1049657744]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -578.0
+offset_top = -324.0
+offset_right = 578.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1281489757]
+layout_mode = 0
+offset_top = 540.0
+offset_right = 1156.0
+offset_bottom = 648.0
+
+[node name="ColorRect2" type="ColorRect" parent="PanelContainer" unique_id=76802387]
+layout_mode = 2
+color = Color(0.14509805, 0.23921569, 0.3764706, 1)
+
+[node name="health" type="RichTextLabel" parent="PanelContainer" unique_id=95687474]
+layout_mode = 2
+text = "Health:"
+
+[node name="dashcd" type="RichTextLabel" parent="PanelContainer" unique_id=1313214177]
+layout_mode = 2
+text = "CAN YOU DASH?"
+
+[node name="currentweapon" type="RichTextLabel" parent="PanelContainer" unique_id=2062525757]
+layout_mode = 2
+text = "Current Weapon:"
+
+[node name="score" type="RichTextLabel" parent="PanelContainer" unique_id=1065625984]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="currentwave" type="RichTextLabel" parent="PanelContainer" unique_id=77778589]
+layout_mode = 2
+text = "Health:"
+
+[node name="weapondamage" type="RichTextLabel" parent="PanelContainer/currentwave" unique_id=725271811]
+layout_mode = 0
+
+[node name="firerate" type="RichTextLabel" parent="PanelContainer/currentwave" unique_id=1023245094]
+layout_mode = 0
+text = "Health:"
+
+[node name="enemiesleft" type="RichTextLabel" parent="PanelContainer" unique_id=1695265346]
+layout_mode = 2
+text = "Health:"
