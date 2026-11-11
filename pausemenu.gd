@@ -7,20 +7,24 @@ func _ready():
 
 func resume():
 	get_tree().paused = false
-	$AnimationPlayer.play_backwards("obfus")
-	
+	#$AnimationPlayer.play_backwards("obfus")
+	#await $AnimationPlayer.animation_finished
+	if not get_tree().paused:
+		hide()
 
 func pause():
+	show()
 	get_tree().paused = true
 	$AnimationPlayer.play("obfus")
-	show()
 
 
 func testEsc():
-	if Input.is_action_just_pressed("escape") and get_tree().paused == false:
-		pause()
-	elif Input.is_action_just_pressed("escape") and get_tree().paused == true:
-		resume()
+	if Input.is_action_just_pressed("escape"):
+		print("escape pressed")
+		if get_tree().paused:
+			resume()
+		else:
+			pause()
 
 
 

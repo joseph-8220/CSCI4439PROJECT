@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdahy"]
 size = Vector2(10, 14)
 
-[node name="player" type="CharacterBody2D" unique_id=53312238]
+[node name="player" type="CharacterBody2D" unique_id=53312238 groups=["player", "playerprojectile"]]
 process_mode = 1
 collision_layer = 2
 collision_mask = 25

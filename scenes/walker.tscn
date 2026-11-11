@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dc8oyiepw65r6"]
+
+[ext_resource type="Script" uid="uid://hfokwvxqvtlt" path="res://scripts/walker.gd" id="1_2dkgr"]
+[ext_resource type="Texture2D" uid="uid://cpssql6cbd3fm" path="res://sprites/feyereball.png" id="2_v8erx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p87e"]
+
+[node name="walker" type="CharacterBody2D" unique_id=1867574394 groups=["enemy"]]
+script = ExtResource("1_2dkgr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1924085795]
+texture_filter = 1
+position = Vector2(2.3841858e-07, 2.3841858e-07)
+scale = Vector2(0.625, 0.625)
+texture = ExtResource("2_v8erx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2144285010]
+shape = SubResource("RectangleShape2D_cc37w")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2037809327]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1243739896]
+shape = SubResource("RectangleShape2D_8p87e")

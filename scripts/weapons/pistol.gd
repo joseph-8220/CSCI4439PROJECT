@@ -14,3 +14,4 @@ func use():
 	projectile.rota = global_rotation
 	
 	get_tree().current_scene.add_child(projectile)
+	# projectile.damage = i can change the value of the projectile damage as it leaves the barrel
