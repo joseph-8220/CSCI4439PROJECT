@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://bqhfg703gpo0l"]
 
 [ext_resource type="Script" uid="uid://bshqgry1dyl4s" path="res://scripts/ui/mainmenu.gd" id="1_5mbse"]
+[ext_resource type="FontFile" uid="uid://c56mn7fbtefpw" path="res://Space_Mono/SpaceMono-Italic.ttf" id="2_d0jm7"]
+[ext_resource type="FontFile" uid="uid://bf2mddpxyt30x" path="res://Space_Mono/SpaceMono-BoldItalic.ttf" id="2_vxmnk"]
+[ext_resource type="FontFile" uid="uid://buku1y8i73ps2" path="res://Space_Mono/SpaceMono-Regular.ttf" id="4_b2ujf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8tu6"]
 
@@ -51,6 +54,7 @@ offset_top = -16.0
 offset_right = 180.0
 offset_bottom = 84.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_d0jm7")
 theme_override_font_sizes/font_size = 50
 text = "START"
 
@@ -67,6 +71,7 @@ offset_right = 180.0
 offset_bottom = 262.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_d0jm7")
 theme_override_font_sizes/font_size = 50
 text = "QUIT"
 
@@ -80,6 +85,7 @@ offset_top = -246.0
 offset_right = 344.5
 offset_bottom = -147.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_vxmnk")
 theme_override_font_sizes/font_size = 72
 text = "SURVIVE THE NIGHT"
 
@@ -93,12 +99,15 @@ offset_top = -87.0
 offset_right = -192.0
 offset_bottom = 216.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_b2ujf")
 theme_override_font_sizes/font_size = 30
 text = "CONTROLS
 LMB: FIRE
 WASD/ARROWS : MOVE
 SHIFT: DASH
-ESC: PAUSE"
+ESC: PAUSE
+(INTERMISSION) 
+OPEN SHOP: E"
 
 [connection signal="pressed" from="buttonmanager/start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="buttonmanager/quit" to="." method="_on_quit_pressed"]

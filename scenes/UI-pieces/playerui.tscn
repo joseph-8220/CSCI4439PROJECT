@@ -1,69 +1,121 @@
 [gd_scene format=3 uid="uid://53ifclt6hb2y"]
 
+[ext_resource type="Script" uid="uid://dtjtchkkxs5vi" path="res://scripts/ui/playerui.gd" id="1_lxyv0"]
+[ext_resource type="FontFile" uid="uid://buku1y8i73ps2" path="res://Space_Mono/SpaceMono-Regular.ttf" id="2_a08w8"]
+[ext_resource type="FontFile" uid="uid://c8yu5qgoffkfw" path="res://Space_Mono/SpaceMono-Bold.ttf" id="3_ql3y5"]
+
 [node name="playerui" type="Control" unique_id=1887862034]
+z_index = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_lxyv0")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1049657744]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -578.0
-offset_top = -324.0
-offset_right = 578.0
-offset_bottom = 324.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0)
-
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1281489757]
+[node name="Panel" type="Panel" parent="." unique_id=503838622]
 layout_mode = 0
 offset_top = 540.0
 offset_right = 1156.0
 offset_bottom = 648.0
 
-[node name="ColorRect2" type="ColorRect" parent="PanelContainer" unique_id=76802387]
-layout_mode = 2
-color = Color(0.14509805, 0.23921569, 0.3764706, 1)
+[node name="ColorRect2" type="ColorRect" parent="Panel" unique_id=76802387]
+layout_mode = 0
+offset_right = 1156.0
+offset_bottom = 108.0
+color = Color(0.16960245, 0.27524596, 0.42930937, 0.3764706)
 
-[node name="health" type="RichTextLabel" parent="PanelContainer" unique_id=95687474]
-layout_mode = 2
+[node name="currentwave" type="RichTextLabel" parent="Panel" unique_id=77778589]
+layout_mode = 0
+offset_left = 200.0
+offset_right = 315.0
+offset_bottom = 27.0
+theme_override_fonts/normal_font = ExtResource("2_a08w8")
+text = "Wave: "
+
+[node name="enemiesleft" type="RichTextLabel" parent="Panel" unique_id=1695265346]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 77.0
+offset_right = 337.0
+offset_bottom = 103.0
+theme_override_fonts/normal_font = ExtResource("2_a08w8")
+text = "Enemies Remaining:"
+
+[node name="health" type="RichTextLabel" parent="Panel" unique_id=95687474]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 129.0
+offset_bottom = 25.0
+theme_override_fonts/normal_font = ExtResource("2_a08w8")
 text = "Health:"
 
-[node name="dashcd" type="RichTextLabel" parent="PanelContainer" unique_id=1313214177]
-layout_mode = 2
-text = "CAN YOU DASH?"
-
-[node name="currentweapon" type="RichTextLabel" parent="PanelContainer" unique_id=2062525757]
-layout_mode = 2
-text = "Current Weapon:"
-
-[node name="score" type="RichTextLabel" parent="PanelContainer" unique_id=1065625984]
-layout_mode = 2
+[node name="score" type="RichTextLabel" parent="Panel" unique_id=1065625984]
+layout_mode = 0
+offset_left = 727.0
+offset_top = 2.0
+offset_right = 994.0
+offset_bottom = 28.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "Score"
-horizontal_alignment = 1
+theme_override_fonts/normal_font = ExtResource("2_a08w8")
+text = "Score: "
 vertical_alignment = 1
 
-[node name="currentwave" type="RichTextLabel" parent="PanelContainer" unique_id=77778589]
-layout_mode = 2
-text = "Health:"
-
-[node name="weapondamage" type="RichTextLabel" parent="PanelContainer/currentwave" unique_id=725271811]
+[node name="currentweapon" type="RichTextLabel" parent="Panel" unique_id=2062525757]
 layout_mode = 0
+offset_left = 361.0
+offset_top = 1.0
+offset_right = 684.0
+offset_bottom = 28.0
+theme_override_fonts/normal_font = ExtResource("3_ql3y5")
+theme_override_fonts/bold_font = ExtResource("3_ql3y5")
+text = "Current Weapon:"
 
-[node name="firerate" type="RichTextLabel" parent="PanelContainer/currentwave" unique_id=1023245094]
+[node name="dashcd" type="RichTextLabel" parent="Panel" unique_id=1313214177]
 layout_mode = 0
-text = "Health:"
+offset_left = 1.0
+offset_top = 45.0
+offset_right = 46.0
+offset_bottom = 70.0
+theme_override_fonts/normal_font = ExtResource("2_a08w8")
+text = "Dash"
 
-[node name="enemiesleft" type="RichTextLabel" parent="PanelContainer" unique_id=1695265346]
-layout_mode = 2
-text = "Health:"
+[node name="weapondamage" type="RichTextLabel" parent="Panel" unique_id=725271811]
+layout_mode = 0
+offset_left = 361.0
+offset_top = 66.0
+offset_right = 687.0
+offset_bottom = 95.0
+theme_override_fonts/normal_font = ExtResource("2_a08w8")
+text = "Damage:"
+
+[node name="firerate" type="RichTextLabel" parent="Panel" unique_id=1023245094]
+layout_mode = 0
+offset_left = 359.0
+offset_top = 33.0
+offset_right = 682.0
+offset_bottom = 61.0
+theme_override_fonts/normal_font = ExtResource("2_a08w8")
+text = "Fire Rate: "
+
+[node name="money" type="RichTextLabel" parent="Panel" unique_id=1843075647]
+layout_mode = 0
+offset_left = 726.0
+offset_top = 46.0
+offset_right = 1014.0
+offset_bottom = 72.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("2_a08w8")
+text = "Money:"
+vertical_alignment = 1
+
+[node name="DashColor" type="ColorRect" parent="Panel" unique_id=930616283]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 74.0
+offset_right = 30.0
+offset_bottom = 94.0

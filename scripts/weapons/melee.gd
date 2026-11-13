@@ -1,5 +1,5 @@
 class_name MeleeWeapon
-extends weapon
+extends Node2D
 
 @export var damage : int
 @export var hit_force : float

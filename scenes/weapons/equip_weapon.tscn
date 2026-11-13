@@ -1,9 +1,42 @@
 [gd_scene format=3 uid="uid://cllecdjbygkyk"]
 
 [ext_resource type="Script" uid="uid://dwmq0yet1doc5" path="res://scripts/weapons/equip_weapon.gd" id="1_y1pnd"]
+[ext_resource type="Texture2D" uid="uid://qdtkrywj1cqu" path="res://sprites/sheets.png" id="2_o0qyp"]
 [ext_resource type="PackedScene" uid="uid://dvivh5oe6ik82" path="res://scenes/weapons/pistol.tscn" id="2_x8814"]
+[ext_resource type="Script" uid="uid://bdx7w1qx8l8sr" path="res://scripts/weapons/shotgun.gd" id="3_vbup7"]
+[ext_resource type="Script" uid="uid://q8h0mpfdmbi0" path="res://scripts/weapons/m_gun.gd" id="4_o0qyp"]
+[ext_resource type="Script" uid="uid://cdd7smof6tb1l" path="res://scripts/weapons/crossbow.gd" id="5_ykrxr"]
 
-[node name="equip_weapon" type="Node2D" unique_id=1105878114]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wah6k"]
+size = Vector2(2003, 4)
+
+[node name="equip_weapon" type="Node2D" unique_id=1105878114 groups=["weapon"]]
 script = ExtResource("1_y1pnd")
 
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1602182276]
+texture = ExtResource("2_o0qyp")
+hframes = 19
+vframes = 2
+frame = 20
+
 [node name="Pistol" parent="." unique_id=847540433 instance=ExtResource("2_x8814")]
+
+[node name="Shotgun" type="CharacterBody2D" parent="." unique_id=2076756109]
+script = ExtResource("3_vbup7")
+
+[node name="MGun" type="CharacterBody2D" parent="." unique_id=1950453494]
+script = ExtResource("4_o0qyp")
+
+[node name="Crossbow" type="CharacterBody2D" parent="." unique_id=426449217]
+script = ExtResource("5_ykrxr")
+
+[node name="Line2D" type="Line2D" parent="Crossbow" unique_id=1460382390]
+points = PackedVector2Array(0, 0, 2000, 0)
+width = 1.7
+default_color = Color(1, 1, 1, 0.8862745)
+
+[node name="Area2D" type="Area2D" parent="Crossbow" unique_id=1403672767]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crossbow/Area2D" unique_id=8888942]
+position = Vector2(998.5, 0)
+shape = SubResource("RectangleShape2D_wah6k")

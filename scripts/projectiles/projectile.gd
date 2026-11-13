@@ -2,7 +2,7 @@ extends CharacterBody2D
 var pos: Vector2
 var rota: float
 var dir: float
-@export var speed = 300
+@export var speed: float = 300
 var damage: int
 
 func _ready():
@@ -18,7 +18,6 @@ func _physics_process(delta):
 					queue_free()
 					break;
 	if abs(global_position.x) > 176 or abs(global_position.y) > 96:
-		print("bullet hit boundary at ", global_position)
 		queue_free()
 	velocity = Vector2(speed,0).rotated(dir)
 	move_and_slide()

@@ -12,6 +12,7 @@ size = Vector2(10, 16)
 
 [node name="player" type="CharacterBody2D" unique_id=53312238 groups=["player", "playerprojectile"]]
 process_mode = 1
+z_index = 1
 collision_layer = 2
 collision_mask = 25
 script = ExtResource("1_onrkg")
@@ -26,9 +27,11 @@ region_rect = Rect2(10, 10, 16, 16)
 shape = SubResource("RectangleShape2D_sdahy")
 
 [node name="equip_weapon" parent="." unique_id=1105878114 instance=ExtResource("3_dqkch")]
+z_index = -1
 position = Vector2(8, 0)
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=480766290]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=1685858333]
 shape = SubResource("RectangleShape2D_cc37w")

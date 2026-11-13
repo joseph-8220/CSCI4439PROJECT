@@ -1,0 +1,229 @@
+[gd_scene format=3 uid="uid://cdlkpdad1k64h"]
+
+[ext_resource type="Script" uid="uid://bpb88e6vplnu6" path="res://scripts/ui/shopui.gd" id="1_au06a"]
+[ext_resource type="FontFile" uid="uid://bf2mddpxyt30x" path="res://Space_Mono/SpaceMono-BoldItalic.ttf" id="3_pxced"]
+[ext_resource type="Texture2D" uid="uid://qdtkrywj1cqu" path="res://sprites/sheets.png" id="4_bnp52"]
+[ext_resource type="FontFile" uid="uid://c56mn7fbtefpw" path="res://Space_Mono/SpaceMono-Italic.ttf" id="5_kqncc"]
+[ext_resource type="Texture2D" uid="uid://dn2mhy531u785" path="res://sprites/playenemweaitem.png" id="6_kqncc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8p87e"]
+atlas = ExtResource("4_bnp52")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnp52"]
+atlas = ExtResource("4_bnp52")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kqncc"]
+atlas = ExtResource("4_bnp52")
+region = Rect2(256, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmnjt"]
+atlas = ExtResource("6_kqncc")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="Animation" id="Animation_pxced"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -648)]
+}
+
+[sub_resource type="Animation" id="Animation_2pi8r"]
+resource_name = "dropdown"
+length = 0.43333334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bnp52"]
+_data = {
+&"RESET": SubResource("Animation_pxced"),
+&"dropdown": SubResource("Animation_2pi8r")
+}
+
+[node name="shopui" type="Control" unique_id=1385614335 groups=["shop"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -648.0
+offset_bottom = -648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_au06a")
+
+[node name="Panel" type="Panel" parent="." unique_id=174601867]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 530.0
+
+[node name="TextureRect" type="ColorRect" parent="Panel" unique_id=1918154648]
+modulate = Color(1, 1, 1, 0.41960785)
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 530.0
+color = Color(0.16862746, 0.27450982, 0.42745098, 0.3764706)
+
+[node name="SHOP" type="Label" parent="Panel" unique_id=1412875442]
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("3_pxced")
+theme_override_font_sizes/font_size = 50
+text = "SHOP"
+horizontal_alignment = 1
+
+[node name="damage" type="TextureRect" parent="Panel" unique_id=620204288]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 72.0
+offset_right = 92.0
+offset_bottom = 112.0
+texture = SubResource("AtlasTexture_8p87e")
+
+[node name="powbutton" type="Button" parent="Panel/damage" unique_id=909617078]
+layout_mode = 0
+offset_left = -14.0
+offset_top = 92.0
+offset_right = 40.0
+offset_bottom = 119.0
+text = "BUY
+($)
+(0)"
+
+[node name="Label" type="Label" parent="Panel/damage" unique_id=579207781]
+layout_mode = 0
+offset_left = -36.0
+offset_top = 49.0
+offset_right = 67.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("5_kqncc")
+theme_override_font_sizes/font_size = 12
+text = "POWER
+"
+horizontal_alignment = 1
+
+[node name="speed" type="TextureRect" parent="Panel" unique_id=1821354165]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 72.0
+offset_right = 218.0
+offset_bottom = 112.0
+texture = SubResource("AtlasTexture_bnp52")
+
+[node name="Label" type="Label" parent="Panel/speed" unique_id=1753289518]
+layout_mode = 0
+offset_left = -36.0
+offset_top = 49.0
+offset_right = 67.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("5_kqncc")
+theme_override_font_sizes/font_size = 12
+text = "VITALITY"
+horizontal_alignment = 1
+
+[node name="spebutton" type="Button" parent="Panel/speed" unique_id=143796430]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 92.0
+offset_right = 169.0
+offset_bottom = 169.0
+text = "BUY
+($)
+(0)"
+
+[node name="health" type="TextureRect" parent="Panel" unique_id=784128603]
+layout_mode = 0
+offset_left = 305.0
+offset_top = 72.0
+offset_right = 345.0
+offset_bottom = 112.0
+texture = SubResource("AtlasTexture_kqncc")
+
+[node name="Label" type="Label" parent="Panel/health" unique_id=1036991340]
+layout_mode = 0
+offset_left = -36.0
+offset_top = 49.0
+offset_right = 67.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("5_kqncc")
+theme_override_font_sizes/font_size = 12
+text = "MOVEMENT"
+horizontal_alignment = 1
+
+[node name="vitbutton" type="Button" parent="Panel/health" unique_id=246582660]
+layout_mode = 0
+offset_left = -135.0
+offset_top = 92.0
+offset_right = -81.0
+offset_bottom = 169.0
+text = "BUY
+($)
+(0)"
+
+[node name="SPECIAL" type="TextureRect" parent="Panel" unique_id=116828315]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 258.0
+offset_right = 120.0
+offset_bottom = 354.0
+texture = SubResource("AtlasTexture_qmnjt")
+
+[node name="Label" type="Label" parent="Panel/SPECIAL" unique_id=851938568]
+layout_mode = 0
+offset_left = -22.0
+offset_top = 100.0
+offset_right = 361.0
+offset_bottom = 271.0
+theme_override_fonts/font = ExtResource("5_kqncc")
+theme_override_font_sizes/font_size = 13
+text = "The Crossbow
+A shepherd protects the flock.
+Fire hitscan, piercing bolts for high damage.
+Slow fire rate.
+Damage increases with power.
+"
+
+[node name="SPECIALLABEL" type="Label" parent="Panel/SPECIAL" unique_id=794354432]
+layout_mode = 0
+offset_left = 103.0
+offset_top = -4.0
+offset_right = 360.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("3_pxced")
+text = "TODAY'S SPECIAL"
+horizontal_alignment = 1
+
+[node name="weapbutton" type="Button" parent="Panel/SPECIAL" unique_id=206324452]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 65.0
+offset_right = 228.0
+offset_bottom = 110.0
+text = "BUY ($)"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1828396994]
+libraries/ = SubResource("AnimationLibrary_bnp52")
+
+[connection signal="pressed" from="Panel/damage/powbutton" to="." method="_on_powbutton_pressed"]
+[connection signal="pressed" from="Panel/speed/spebutton" to="." method="_on_spebutton_pressed"]
+[connection signal="pressed" from="Panel/health/vitbutton" to="." method="_on_vitbutton_pressed"]
+[connection signal="pressed" from="Panel/SPECIAL/weapbutton" to="." method="_on_weapbutton_pressed"]

@@ -13,7 +13,7 @@ func _on_start_pressed() -> void:
 	set_process(false)
 
 func _process(delta):
-	if Input.is_action_just_pressed("escape") and get_tree().paused:
+	if Input.is_action_just_pressed("escape") and is_visible_in_tree():
 		_on_start_pressed()
 
 

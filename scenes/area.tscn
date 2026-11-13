@@ -4,9 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://dydy08duw2lhf" path="res://scenes/player.tscn" id="2_t8tu6"]
 [ext_resource type="PackedScene" uid="uid://df3jsapali01n" path="res://scenes/UI-pieces/tilefloor.tscn" id="3_t8tu6"]
 [ext_resource type="PackedScene" uid="uid://c002ln5dmrmg8" path="res://scenes/UI-pieces/pausemenu.tscn" id="4_abe4w"]
+[ext_resource type="PackedScene" uid="uid://cdlkpdad1k64h" path="res://scenes/UI-pieces/shopui.tscn" id="5_abe4w"]
 [ext_resource type="PackedScene" uid="uid://bqhfg703gpo0l" path="res://scenes/UI-pieces/mainmenu.tscn" id="5_t8tu6"]
+[ext_resource type="PackedScene" uid="uid://53ifclt6hb2y" path="res://scenes/UI-pieces/playerui.tscn" id="6_mphia"]
 
-[node name="area" type="Node2D" unique_id=2043200640]
+[node name="area" type="Node2D" unique_id=2043200640 groups=["main"]]
 process_mode = 1
 script = ExtResource("1_5jt5u")
 
@@ -27,6 +29,10 @@ z_index = 1
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1839496513]
 process_mode = 3
 
+[node name="playerui" parent="CanvasLayer" unique_id=1887862034 instance=ExtResource("6_mphia")]
+
+[node name="shopui" parent="CanvasLayer" unique_id=1385614335 instance=ExtResource("5_abe4w")]
+
 [node name="pausemenu" parent="CanvasLayer" unique_id=2009030280 instance=ExtResource("4_abe4w")]
 anchors_preset = 8
 anchor_left = 0.5
@@ -44,5 +50,7 @@ position = Vector2(576, 324)
 process_mode = 1
 wait_time = 2.0
 autostart = true
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=1065069843]
 
 [connection signal="timeout" from="wavespawner" to="." method="_on_wavespawner_timeout"]

@@ -4,13 +4,18 @@ extends character
 
 # all of these variables will be modifiable through items. 
 # do note that dash power affects the velocity, duration, of the dash
-@export var dash_power : float = 8.5
+@export var dash_power : float = 8.5 
 @export var dash_cd : float = 1
 @export var friction_coeff : float = 8
 @export var playerhealth : int = 3
+@export var maxhealth: int = 3
 @export var money : int = 0
 @export var knockback_strength : float = 500
 @export var iframes_duration: float = .5
+@export var weaponid: int = 1
+@export var dmgbuffcount: int = 0
+@export var vitbuffcount: int = 0
+@export var spebuffcount: int = 0
 #not these ones though lol
 var can_dash : bool = true
 var is_invuln: bool = false
@@ -18,9 +23,11 @@ var last_dash_time : float
 var input_direction : Vector2 = Vector2.ZERO
 var dash_direction : Vector2 = Vector2.ZERO
 var is_dashing : bool
-var current_weapon : int = 0
+# var current_weapon : int = 0
 var knockback: Vector2 = Vector2.ZERO
 var dead: bool
+var shopping: bool = false
+var score: int = 0
 func _ready():
 	movespeed = 85
 func get_input():
@@ -28,6 +35,10 @@ func get_input():
 	look_at(mouse_pos)
 	var aim_direction = (mouse_pos - global_position).normalized()
 	$equip_weapon.set_aim_direction(aim_direction)
+	if Input.is_action_pressed("click"):
+		$equip_weapon._try_use()
+	
+	
 	
 	input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * movespeed
@@ -36,10 +47,7 @@ func get_input():
 			if _try_dash():
 				_dash()
 				print("dash used")
-	# placeholder, will be replaced with the weapon system
-	#if Input.is_action_pressed('click'):
-		#$equip_weapon._try_use()
-	
+
 	
 func _try_dash() -> bool:
 	if not can_dash:
@@ -52,25 +60,22 @@ func _try_dash() -> bool:
 func _dash():
 	input_direction = Input.get_vector("left", "right", "up", "down")
 	# cannot dash while standing still 
-	# (i could add like spot dodging if we go in on dashes also working as a dodge but whatever)
 	if input_direction == Vector2.ZERO:
 		return
 	dash_direction = input_direction
-
 	velocity = dash_direction * dash_power * 50
+	can_dash = false
 	is_dashing = true
 	last_dash_time = Time.get_unix_time_from_system()
 
 func _physics_process(delta):
-	if get_tree().paused or dead:
+	#prevent player input while game is paused, player is dead, or shopping ui is open
+	if get_tree().paused or dead or shopping:
 		return
-	if Input.is_action_just_pressed("ui_accept"):
-		playerhealth = 3
 	if playerhealth <= 1:
 		$Sprite2D.frame = 1
 	else:
 		$Sprite2D.frame = 0
-		
 	input_direction = Input.get_vector("left", "right", "up", "down")
 	
 	# DASHING
@@ -79,34 +84,38 @@ func _physics_process(delta):
 		
 		if Time.get_unix_time_from_system() - last_dash_time >= dash_power * 0.01:
 			is_dashing = false
+			await get_tree().create_timer(dash_cd, false).timeout
+			can_dash = true
+			
+			
+			
 	else:
-		if not is_invuln:
-			pass
-			#for index in get_slide_collision_count():
-				#var collision = get_slide_collision(index)
-				#if is_instance_valid(collision.get_collider()):
-					#if collision.get_collider().is_in_group("enemy"):
-						#var push_dir = (global_position - collision.get_collider().global_position).normalized()
-						#knockback = push_dir * knockback_strength
-						#
-						#var playerdamage = collision.get_collider().damage
-						#print("player took ", playerdamage, " damage")
-						#damage(playerdamage)
-						#ubercharge()
-						#break
+		# i cannot seem to get the world boundaries to work so this is the best i got
+		if global_position.x < -165:
+			global_position.x = -165
+		elif global_position.x > 165:
+			global_position.x = 165
+		if global_position.y < -90:
+			global_position.y = -90
+		elif global_position.y > 90:
+			global_position.y = 90
 		
 		get_input()
 		velocity += knockback
 		knockback = knockback.lerp(Vector2.ZERO, friction_coeff * delta)
 	move_and_slide()
 
+# damage and death function 
 func damage(owchie):
 	playerhealth = playerhealth - owchie
 	
 	if playerhealth < 1:
 		dead = true;
-		print("player died")
+		$Sprite2D.modulate.a = 0
+		$equip_weapon.modulate.a = 0
+		get_tree().get_first_node_in_group("main").death()
 
+# iframes 
 func ubercharge():
 	if dead:
 		return
@@ -116,14 +125,23 @@ func ubercharge():
 	is_invuln = false
 	print("iframes over")
 
+func checkStats():
+	maxhealth = 3 + vitbuffcount
+	playerhealth = maxhealth
+	dash_power = 8.5 + 1.5*spebuffcount
+	movespeed = 85 + 5*spebuffcount
+	iframes_duration = 0.5 + .009*vitbuffcount
+	friction_coeff = 8 - .25*vitbuffcount
 
+# originally i was doing the collision.collider.whatever thing i used for the projectiles but in 
+# general it was just really buggy so i decided to just use a hurtbox instead
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if is_invuln or dead:
 		return
 	if body.is_in_group("enemy"):
 		var push_dir = (global_position - body.global_position).normalized()
 		knockback = push_dir * knockback_strength
-		velocity = knockback # Immediately launch the player
+		velocity = knockback 
 		
 		print("player took ", body.damage, " damage")
 		damage(body.damage)

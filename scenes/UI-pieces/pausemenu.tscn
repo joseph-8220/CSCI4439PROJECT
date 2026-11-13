@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ddmd8f0bxja2q" path="res://scripts/ui/pausemenu.gd" id="1_r33we"]
 [ext_resource type="Shader" uid="uid://thylu5ba218t" path="res://scripts/ui/new_shader.gdshader" id="2_8ljkb"]
+[ext_resource type="FontFile" uid="uid://c8yu5qgoffkfw" path="res://Space_Mono/SpaceMono-Bold.ttf" id="3_rxmfj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8p87e"]
 shader = ExtResource("2_8ljkb")
@@ -70,6 +71,7 @@ _data = {
 
 [node name="pausemenu" type="Control" unique_id=2009030280]
 process_mode = 3
+z_index = 5
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -115,19 +117,23 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1649183037]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rxmfj")
 text = "PAUSED"
 horizontal_alignment = 1
 
 [node name="ResumeButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=432180718]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rxmfj")
 text = "RESUME"
 
 [node name="RestartButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=94050411]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rxmfj")
 text = "RESTART"
 
 [node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1523598120]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_rxmfj")
 text = "QUIT"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1119363414]
