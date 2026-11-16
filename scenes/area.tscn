@@ -57,7 +57,7 @@ anchor_bottom = 0.5
 
 [node name="click" type="AudioStreamPlayer2D" parent="CanvasLayer/pausemenu" unique_id=1777301394]
 stream = ExtResource("8_8pxb4")
-volume_db = -20.0
+volume_db = -25.0
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1135224871]
 layer = 0
