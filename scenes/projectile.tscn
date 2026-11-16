@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://6jpgiw7mghkl"]
+
+[ext_resource type="Script" uid="uid://bxa5wxwaa7b2o" path="res://scripts/projectiles/projectile.gd" id="1_q3m7n"]
+[ext_resource type="Texture2D" uid="uid://qdtkrywj1cqu" path="res://sprites/sheets.png" id="2_q3m7n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
+size = Vector2(6, 6)
+
+[node name="projectile" type="Area2D" unique_id=1319615647 groups=["projectile"]]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_q3m7n")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1190166991]
+texture = ExtResource("2_q3m7n")
+hframes = 19
+vframes = 2
+frame = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=838073959]
+shape = SubResource("RectangleShape2D_cc37w")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

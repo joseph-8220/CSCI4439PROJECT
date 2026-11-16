@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://bqhfg703gpo0l"]
+
+[ext_resource type="Script" uid="uid://bshqgry1dyl4s" path="res://scripts/ui/mainmenu.gd" id="1_5mbse"]
+[ext_resource type="FontFile" uid="uid://c56mn7fbtefpw" path="res://Space_Mono/SpaceMono-Italic.ttf" id="2_d0jm7"]
+[ext_resource type="FontFile" uid="uid://bf2mddpxyt30x" path="res://Space_Mono/SpaceMono-BoldItalic.ttf" id="2_vxmnk"]
+[ext_resource type="FontFile" uid="uid://buku1y8i73ps2" path="res://Space_Mono/SpaceMono-Regular.ttf" id="4_b2ujf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8tu6"]
+
+[node name="mainmenu" type="Node2D" unique_id=583645258]
+process_mode = 3
+script = ExtResource("1_5mbse")
+
+[node name="TextureRect" type="Panel" parent="." unique_id=842282546]
+modulate = Color(0.012617188, 0.012617188, 0.012617188, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -578.0
+offset_top = -324.0
+offset_right = 578.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_t8tu6")
+
+[node name="buttonmanager" type="Control" parent="." unique_id=375157741]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="start" type="Button" parent="buttonmanager" unique_id=254341329]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.0
+offset_top = -16.0
+offset_right = 180.0
+offset_bottom = 84.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_d0jm7")
+theme_override_font_sizes/font_size = 50
+text = "START"
+
+[node name="quit" type="Button" parent="buttonmanager" unique_id=1716459202]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = 162.0
+offset_right = 180.0
+offset_bottom = 262.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_d0jm7")
+theme_override_font_sizes/font_size = 50
+text = "QUIT"
+
+[node name="Label" type="Label" parent="buttonmanager" unique_id=669832646]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -344.5
+offset_top = -246.0
+offset_right = 344.5
+offset_bottom = -147.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_vxmnk")
+theme_override_font_sizes/font_size = 72
+text = "SURVIVE THE NIGHT"
+
+[node name="Label2" type="Label" parent="buttonmanager" unique_id=1295957516]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -545.0
+offset_top = -87.0
+offset_right = -192.0
+offset_bottom = 216.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_b2ujf")
+theme_override_font_sizes/font_size = 30
+text = "CONTROLS
+LMB: FIRE
+WASD/ARROWS : MOVE
+SHIFT: DASH
+ESC: PAUSE
+(INTERMISSION) 
+OPEN SHOP: E"
+
+[connection signal="pressed" from="buttonmanager/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="buttonmanager/quit" to="." method="_on_quit_pressed"]

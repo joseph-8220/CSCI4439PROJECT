@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bpb6bfovhc6si"]
+
+[ext_resource type="Script" uid="uid://dyxyyba5syvof" path="res://scripts/projectiles/enemyprojectile.gd" id="1_h3nv5"]
+[ext_resource type="Texture2D" uid="uid://qdtkrywj1cqu" path="res://sprites/sheets.png" id="2_f1s01"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc37w"]
+atlas = ExtResource("2_f1s01")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p87e"]
+size = Vector2(6, 6)
+
+[node name="Area2D" type="Area2D" unique_id=152232804 groups=["enemy", "enemy_projectile"]]
+collision_layer = 9
+collision_mask = 7
+script = ExtResource("1_h3nv5")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=301022484]
+position = Vector2(-2.3841858e-07, 5.9604645e-08)
+scale = Vector2(1.55, 1.55)
+texture = SubResource("AtlasTexture_cc37w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=693819580]
+shape = SubResource("RectangleShape2D_8p87e")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

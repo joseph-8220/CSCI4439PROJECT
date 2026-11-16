@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bjlyyel4xosty"]
+
+[ext_resource type="Texture2D" uid="uid://qdtkrywj1cqu" path="res://sprites/sheets.png" id="1_7eecr"]
+[ext_resource type="Script" uid="uid://c8nbofys44fwu" path="res://scripts/enemies/eyeball.gd" id="1_mn6nm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc37w"]
+atlas = ExtResource("1_7eecr")
+region = Rect2(272, 0, 32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cc37w"]
+radius = 68.0
+
+[node name="EYEBALL" type="CharacterBody2D" unique_id=1024133985 groups=["enemy"]]
+collision_layer = 9
+script = ExtResource("1_mn6nm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=490246987]
+scale = Vector2(0.6, 0.6)
+texture = SubResource("AtlasTexture_cc37w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=72168452 groups=["enemy"]]
+shape = SubResource("RectangleShape2D_cc37w")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=80461557]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=723800397]
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=2092772701]
+collision_mask = 2
+
+[node name="Detection" type="CollisionShape2D" parent="DetectionArea" unique_id=1132991319 groups=["enemy"]]
+shape = SubResource("CircleShape2D_cc37w")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

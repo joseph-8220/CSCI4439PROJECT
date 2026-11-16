@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dydy08duw2lhf"]
+
+[ext_resource type="Script" uid="uid://b7hxr74rtdxc7" path="res://scripts/character/player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://qdtkrywj1cqu" path="res://sprites/sheets.png" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://cllecdjbygkyk" path="res://scenes/weapons/equip_weapon.tscn" id="3_dqkch"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdahy"]
+size = Vector2(6, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
+size = Vector2(10, 16)
+
+[node name="player" type="CharacterBody2D" unique_id=53312238 groups=["player", "playerprojectile"]]
+process_mode = 1
+z_index = 1
+collision_layer = 2
+collision_mask = 24
+script = ExtResource("1_onrkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1217978987]
+texture = ExtResource("2_qhqgy")
+hframes = 19
+vframes = 2
+region_rect = Rect2(10, 10, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=990776707]
+shape = SubResource("RectangleShape2D_sdahy")
+
+[node name="equip_weapon" parent="." unique_id=1105878114 instance=ExtResource("3_dqkch")]
+z_index = -1
+position = Vector2(8, 0)
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=480766290]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=1685858333]
+shape = SubResource("RectangleShape2D_cc37w")
+
+[connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]

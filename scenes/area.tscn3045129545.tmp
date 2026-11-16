@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dme5lp4lyf3gp"]
+
+[ext_resource type="Script" uid="uid://cgqfpu6qfy6r6" path="res://scripts/area.gd" id="1_5jt5u"]
+[ext_resource type="PackedScene" uid="uid://dydy08duw2lhf" path="res://scenes/player.tscn" id="2_t8tu6"]
+[ext_resource type="PackedScene" uid="uid://dc8oyiepw65r6" path="res://scenes/walker.tscn" id="3_mphia"]
+[ext_resource type="PackedScene" uid="uid://df3jsapali01n" path="res://scenes/tilefloor.tscn" id="3_t8tu6"]
+[ext_resource type="PackedScene" uid="uid://c002ln5dmrmg8" path="res://scenes/UI-pieces/pausemenu.tscn" id="4_abe4w"]
+[ext_resource type="PackedScene" uid="uid://bqhfg703gpo0l" path="res://scenes/UI-pieces/mainmenu.tscn" id="5_t8tu6"]
+
+[node name="area" type="Node2D" unique_id=2043200640]
+process_mode = 1
+script = ExtResource("1_5jt5u")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=206528644]
+zoom = Vector2(3.4, 3.4)
+limit_left = -176
+limit_top = -96
+limit_right = 176
+limit_bottom = 96
+
+[node name="player" parent="." unique_id=53312238 instance=ExtResource("2_t8tu6")]
+process_mode = 0
+top_level = true
+z_index = 1
+
+[node name="walker" parent="." unique_id=1867574394 instance=ExtResource("3_mphia")]
+z_index = 1
+position = Vector2(-87, -32)
+collision_layer = 8
+collision_mask = 15
+
+[node name="tilefloor" parent="." unique_id=666504218 instance=ExtResource("3_t8tu6")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1839496513]
+process_mode = 3
+visible = false
+
+[node name="pausemenu" parent="CanvasLayer" unique_id=2009030280 instance=ExtResource("4_abe4w")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=1135224871]
+layer = 0
+visible = false
+
+[node name="mainmenu" parent="CanvasLayer2" unique_id=583645258 instance=ExtResource("5_t8tu6")]
+position = Vector2(576, 324)
+
+[node name="wavespawner" type="Timer" parent="." unique_id=1813248576]
+process_mode = 1
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="wavespawner" to="." method="_on_wavespawner_timeout"]
