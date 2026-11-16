@@ -9,6 +9,8 @@ var timer: float = 0.0
 var pierce: int = 1
 var hungry: bool
 var hit_list: Array = []
+@onready var hitsound: AudioStreamPlayer2D = $hitsound
+
 func _ready():
 	global_position=pos
 	global_rotation=rota
@@ -28,6 +30,11 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		if body in hit_list:
 			return
+		remove_child(hitsound)
+		get_parent().add_child(hitsound)
+		hitsound.global_position = global_position
+		hitsound.play()
+		hitsound.finished.connect(hitsound.queue_free)
 		body.enemyhealth -= damage
 		pierce -= 1
 		if pierce <= 0:

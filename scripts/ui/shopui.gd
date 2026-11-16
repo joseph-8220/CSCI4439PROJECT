@@ -9,7 +9,10 @@ var vitcost: int
 var soldout: bool
 var weacost: int
 var special: int
-# Called when the node enters the scene tree for the first time.
+@onready var buynoise: AudioStreamPlayer2D = $buynoise
+@onready var blocknoise: AudioStreamPlayer2D = $blocknoise
+@onready var click: AudioStreamPlayer2D = $click
+
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 	weapongroup = get_tree().get_first_node_in_group("weapon")
@@ -32,6 +35,7 @@ func startshopping():
 func _process(delta) -> void:
 	player.shopping = shopping
 	if Input.is_action_just_pressed("shop") and not get_tree().paused and world.intermission and world.wave != 0:
+		click.play()
 		if shopping:
 			stopshopping()
 		else:
@@ -52,13 +56,13 @@ func _process(delta) -> void:
 			$Panel/SPECIAL/Label.text = "The Pistol\nThis again?\nMiddling individual damage.\nMiddling fire rate.\nDamage and fire rate increases with power."
 		2:
 			$Panel/SPECIAL.texture.region = Rect2(48,0,16,16)
-			$Panel/SPECIAL/Label.text = "The Shotgun\nThe kind with the most tent poles.\nFire a fan of pellets.\nKnocks the user back.\nMedium-slow fire rate.\nNumber of pellets increases with power."
+			$Panel/SPECIAL/Label.text = "The Shotgun\nThe kind with the most tent poles.\nFire a fan of pellets.\nKnocks the user back.\nDestroys enemy projectiles.\nMedium-slow fire rate.\nNumber of pellets increases with power."
 		3:
 			$Panel/SPECIAL.texture.region = Rect2(64,0,16,16)
 			$Panel/SPECIAL/Label.text = "The Machine Gun\nFully Automatic!\n...at the cost of low individual damage.\nBlistering fire rate.\nFire rate increases with power."
 		4:
 			$Panel/SPECIAL.texture.region = Rect2(112,0,16,16)
-			$Panel/SPECIAL/Label.text = "The Crossbow\nA shepherd protects the flock.\nFire piercing hitscan bolts for high damage.\nSlow fire rate.\nBolt size increases with power."
+			$Panel/SPECIAL/Label.text = "The Crossbow\nA shepherd protects the flock.\nFire piercing hitscan bolts for high damage.\nSlow fire rate.\nDestroys enemy projectiles.\nBolt size increases with power."
 		_:
 			$Panel/SPECIAL/Label.text = "uh oh" + str(special)
 	if soldout:
@@ -91,25 +95,36 @@ func checkButtons(id):
 					powcost += 5
 					player.dmgbuffcount += 1
 					weapongroup.checkStats()
-				
+					buynoise.play()
+				else:
+					blocknoise.play()
 			2:
 				if canBuy(specost):
 					player.money -= specost
 					specost += 5
 					player.spebuffcount += 1
 					player.checkStats()
+					buynoise.play()
+				else:
+					blocknoise.play()
 			3:
 				if canBuy(vitcost):
 					player.money -= vitcost
 					vitcost += 5
 					player.vitbuffcount += 1
 					player.checkStats()
+					buynoise.play()
+				else:
+					blocknoise.play()
 			4:
 				if canBuy(weacost) and not soldout:
 					weapongroup._equip(special)
 					soldout = true
 					player.money -= weacost
 					weacost += 15
+					buynoise.play()
+				else:
+					blocknoise.play()
 			_:
 				pass
 				

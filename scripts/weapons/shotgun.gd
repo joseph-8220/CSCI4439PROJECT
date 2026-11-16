@@ -7,6 +7,10 @@ var pellets: int
 var lifetime: float = .15
 var pierce: int
 var hungry: bool = true
+
+
+@onready var shotgun_sound: AudioStreamPlayer2D = $ShotgunSound
+
 func _ready():
 	pellets = 3
 	
@@ -20,6 +24,8 @@ func checkStats() -> String:
 	
 func use(damage):
 	var spread = deg_to_rad(35)
+	shotgun_sound.pitch_scale = randf_range(0.8, 1.2)
+	shotgun_sound.play()
 	for i in range(pellets):
 		var projectile = projectile_path.instantiate()
 		

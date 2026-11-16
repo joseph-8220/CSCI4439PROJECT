@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b7hxr74rtdxc7" path="res://scripts/character/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://qdtkrywj1cqu" path="res://sprites/sheets.png" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://cllecdjbygkyk" path="res://scenes/weapons/equip_weapon.tscn" id="3_dqkch"]
+[ext_resource type="AudioStream" uid="uid://b5wtjcpsk1thq" path="res://sounds/woosh.wav" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://cnl6tojl7rrxg" path="res://sounds/playerhurt.wav" id="5_qlg0r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sdahy"]
 size = Vector2(6, 8)
@@ -31,9 +33,15 @@ z_index = -1
 position = Vector2(8, 0)
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=480766290]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=1685858333]
 shape = SubResource("RectangleShape2D_cc37w")
+
+[node name="dashsound" type="AudioStreamPlayer2D" parent="." unique_id=289531383]
+stream = ExtResource("4_dqkch")
+
+[node name="hurtsound" type="AudioStreamPlayer2D" parent="." unique_id=1661354183]
+stream = ExtResource("5_qlg0r")
+pitch_scale = 1.15
 
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]

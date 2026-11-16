@@ -1,4 +1,5 @@
 extends Control
+@onready var click: AudioStreamPlayer2D = $click
 
 func _ready():
 	$AnimationPlayer.play("RESET")
@@ -9,11 +10,13 @@ func resume():
 	get_tree().paused = false
 	#$AnimationPlayer.play_backwards("obfus")
 	#await $AnimationPlayer.animation_finished
+	click.play()
 	if not get_tree().paused:
 		hide()
 
 func pause():
 	show()
+	click.play()
 	get_tree().paused = true
 	$AnimationPlayer.play("obfus")
 

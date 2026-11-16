@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bxa5wxwaa7b2o" path="res://scripts/projectiles/projectile.gd" id="1_q3m7n"]
 [ext_resource type="Texture2D" uid="uid://qdtkrywj1cqu" path="res://sprites/sheets.png" id="2_q3m7n"]
+[ext_resource type="AudioStream" uid="uid://cn6fgyl540qwf" path="res://sounds/hitsound.wav" id="3_softn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cc37w"]
 size = Vector2(6, 6)
@@ -19,5 +20,10 @@ frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=838073959]
 shape = SubResource("RectangleShape2D_cc37w")
+
+[node name="hitsound" type="AudioStreamPlayer2D" parent="." unique_id=1464873862]
+stream = ExtResource("3_softn")
+volume_db = -30.0
+pitch_scale = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

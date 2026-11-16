@@ -1,4 +1,4 @@
-extends character
+extends CharacterBody2D
 # The player is able to dash by double tapping any directional input.
 # I have implemented the dash system, however i still need to implement that double tap input.
 
@@ -9,13 +9,18 @@ extends character
 @export var friction_coeff : float = 8
 @export var playerhealth : int = 3
 @export var maxhealth: int = 3
-@export var money : int = 0
+@export var money : int = 10000000
 @export var knockback_strength : float = 500
 @export var iframes_duration: float = .5
 @export var weaponid: int = 1
 @export var dmgbuffcount: int = 0
 @export var vitbuffcount: int = 0
 @export var spebuffcount: int = 0
+@export var movespeed: int
+
+@onready var dashsound: AudioStreamPlayer2D = $dashsound
+@onready var hurtsound: AudioStreamPlayer2D = $hurtsound
+
 #not these ones though lol
 var can_dash : bool = true
 var is_invuln: bool = false
@@ -62,6 +67,7 @@ func _dash():
 	# cannot dash while standing still 
 	if input_direction == Vector2.ZERO:
 		return
+	dashsound.play()
 	dash_direction = input_direction
 	velocity = dash_direction * dash_power * 50
 	can_dash = false
@@ -111,6 +117,8 @@ func _physics_process(delta):
 func damage(owchie):
 	if is_invuln or is_dashing:
 		return
+	hurtsound.pitch_scale = randf_range(0.92, 1.2)
+	hurtsound.play()
 	playerhealth = playerhealth - owchie
 	$Sprite2D.frame = 1
 	ubercharge()
@@ -137,7 +145,7 @@ func checkStats():
 	dash_power = 10 + .6*spebuffcount
 	movespeed = 85 + 5*spebuffcount
 	iframes_duration = 0.5 + .009*vitbuffcount
-	friction_coeff = 8 - .25*vitbuffcount
+	friction_coeff = 8 + .004*vitbuffcount
 
 # originally i was doing the collision.collider.whatever thing i used for the projectiles but in 
 # general it was just really buggy so i decided to just use a hurtbox instead

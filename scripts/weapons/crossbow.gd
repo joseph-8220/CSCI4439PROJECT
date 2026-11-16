@@ -9,11 +9,12 @@ var maxrange: int = 1000
 @onready var bolt_box: Area2D = $Area2D
 @onready var bolt_line: Line2D = $Line2D
 @onready var base_width: float = bolt_line.width
+@onready var crossbow_sound: AudioStreamPlayer2D = $CrossbowSound
 
 func checkStats():
 	damage = 8 + get_parent().player.dmgbuffcount
 	get_parent().damage = damage
-	if fire_rate != 0.01:
+	if fire_rate  > 0.1:
 		fire_rate = 2.5 - get_parent().player.dmgbuffcount * 0.03
 	get_parent().fire_rate = fire_rate 
 	$"../Sprite2D".frame = 6
@@ -25,6 +26,8 @@ func _ready():
 
 func use(damage):
 	bolt_line.visible = true
+	crossbow_sound.pitch_scale = randf_range(0.85, 1.10)
+	crossbow_sound.play()
 	var targets = bolt_box.get_overlapping_bodies()
 	for body in targets:
 		if body.is_in_group("enemy"):

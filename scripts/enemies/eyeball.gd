@@ -6,6 +6,8 @@ var projectile_path=preload("res://scenes/enemyprojectile.tscn")
 @export var damage: int
 @export var firerate: float
 @export var projectilespeed: float
+@onready var deadnoise: AudioStreamPlayer2D = $deadnoise
+
 var scattering: bool
 var timer: float = 0.0
 func _ready():
@@ -47,6 +49,12 @@ func _physics_process(delta):
 func death():
 	var player = get_tree().get_first_node_in_group("player")
 	var world = get_tree().get_first_node_in_group("main")
+	remove_child(deadnoise)
+	get_parent().add_child(deadnoise)
+	deadnoise.pitch_scale = randf_range(1.4, 1.6)
+	deadnoise.global_position = global_position
+	deadnoise.play()
+	deadnoise.finished.connect(deadnoise.queue_free)
 	queue_free()
 	get_parent().enemycount -= 1
 	player.money = player.money + 10

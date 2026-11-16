@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://qdtkrywj1cqu" path="res://sprites/sheets.png" id="1_7eecr"]
 [ext_resource type="Script" uid="uid://c8nbofys44fwu" path="res://scripts/enemies/eyeball.gd" id="1_mn6nm"]
+[ext_resource type="AudioStream" uid="uid://k68ovon2kms3" path="res://sounds/eyeball_dead.wav" id="3_ps2qp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cc37w"]
 atlas = ExtResource("1_7eecr")
@@ -32,6 +33,11 @@ collision_mask = 2
 
 [node name="Detection" type="CollisionShape2D" parent="DetectionArea" unique_id=1132991319 groups=["enemy"]]
 shape = SubResource("CircleShape2D_cc37w")
+
+[node name="deadnoise" type="AudioStreamPlayer2D" parent="." unique_id=251104825]
+stream = ExtResource("3_ps2qp")
+volume_db = -20.0
+pitch_scale = 1.6
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

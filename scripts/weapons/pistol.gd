@@ -4,6 +4,8 @@ var weaponid = 1
 var fire_rate: float = 0.5
 var damage: int = 1
 var hungry: bool = false
+@onready var pistol_sound: AudioStreamPlayer2D = $PistolSound
+
 #PISTOL
 
 func checkStats():
@@ -15,13 +17,14 @@ func checkStats():
 	
 func use(damage):
 	var projectile = projectile_path.instantiate()
-	
+	pistol_sound.pitch_scale = randf_range(0.82, 1.17)
+	pistol_sound.play()
 	projectile.dir = global_rotation 
 	projectile.pos = global_position
 	projectile.rota = global_rotation
 	projectile.damage = damage
 	projectile.lifetime = 10
-	projectile.speed = 300 + 50*get_parent().player.dmgbuffcount
+	projectile.speed = 450 + 15*get_parent().player.dmgbuffcount
 	projectile.pierce = 1
 	projectile.hungry = hungry
 	get_tree().current_scene.add_child(projectile)

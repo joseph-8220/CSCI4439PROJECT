@@ -5,8 +5,10 @@ extends CharacterBody2D
 @export var speed: float
 @export var enemyhealth: int
 @export var damage: int
+@onready var deadnoise: AudioStreamPlayer2D = $deadnoise
+
 func _ready():
-	speed = 80*pow(1.04, get_tree().get_first_node_in_group("main").wave - 1)
+	speed = 80*pow(1.02, get_tree().get_first_node_in_group("main").wave - 1)
 	enemyhealth = 3 + floor((get_tree().get_first_node_in_group("main").wave - 1)/2)
 	damage = 1
 	get_parent().enemycount += 1
@@ -25,6 +27,13 @@ func _physics_process(delta):
 	move_and_slide()
 
 func death():
+	var parent = get_parent()
+	remove_child(deadnoise)
+	parent.add_child(deadnoise)
+	deadnoise.pitch_scale = randf_range(0.6, 1)
+	deadnoise.global_position = global_position
+	deadnoise.play()
+	deadnoise.finished.connect(deadnoise.queue_free)
 	var player = get_tree().get_first_node_in_group("player")
 	var world = get_tree().get_first_node_in_group("main")
 	queue_free()

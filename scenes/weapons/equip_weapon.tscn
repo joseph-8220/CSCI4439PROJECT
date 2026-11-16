@@ -4,8 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://qdtkrywj1cqu" path="res://sprites/sheets.png" id="2_o0qyp"]
 [ext_resource type="PackedScene" uid="uid://dvivh5oe6ik82" path="res://scenes/weapons/pistol.tscn" id="2_x8814"]
 [ext_resource type="Script" uid="uid://bdx7w1qx8l8sr" path="res://scripts/weapons/shotgun.gd" id="3_vbup7"]
+[ext_resource type="AudioStream" uid="uid://dihwb0optyj0o" path="res://sounds/gunshot.wav" id="4_fmi5r"]
 [ext_resource type="Script" uid="uid://q8h0mpfdmbi0" path="res://scripts/weapons/m_gun.gd" id="4_o0qyp"]
+[ext_resource type="AudioStream" uid="uid://dye26drm68uol" path="res://sounds/shotgun.wav" id="5_n0wa2"]
 [ext_resource type="Script" uid="uid://cdd7smof6tb1l" path="res://scripts/weapons/crossbow.gd" id="5_ykrxr"]
+[ext_resource type="AudioStream" uid="uid://e20wuvdc52vq" path="res://sounds/crossbow.wav" id="7_ykrxr"]
+[ext_resource type="AudioStream" uid="uid://d021jm4gyro86" path="res://sounds/mgun.wav" id="8_to6bd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wah6k"]
 size = Vector2(2003, 4)
@@ -21,11 +25,24 @@ frame = 20
 
 [node name="Pistol" parent="." unique_id=847540433 instance=ExtResource("2_x8814")]
 
+[node name="PistolSound" type="AudioStreamPlayer2D" parent="Pistol" unique_id=167926701]
+stream = ExtResource("4_fmi5r")
+volume_db = -39.0
+
 [node name="Shotgun" type="CharacterBody2D" parent="." unique_id=2076756109]
 script = ExtResource("3_vbup7")
 
+[node name="ShotgunSound" type="AudioStreamPlayer2D" parent="Shotgun" unique_id=622660991]
+stream = ExtResource("5_n0wa2")
+volume_db = -15.0
+
 [node name="MGun" type="CharacterBody2D" parent="." unique_id=1950453494]
 script = ExtResource("4_o0qyp")
+
+[node name="MGunSound" type="AudioStreamPlayer2D" parent="MGun" unique_id=399544062]
+stream = ExtResource("8_to6bd")
+volume_db = -30.0
+pitch_scale = 0.8
 
 [node name="Crossbow" type="CharacterBody2D" parent="." unique_id=426449217]
 script = ExtResource("5_ykrxr")
@@ -40,3 +57,7 @@ default_color = Color(1, 1, 1, 0.8862745)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crossbow/Area2D" unique_id=8888942]
 position = Vector2(998.5, 0)
 shape = SubResource("RectangleShape2D_wah6k")
+
+[node name="CrossbowSound" type="AudioStreamPlayer2D" parent="Crossbow" unique_id=268801733]
+stream = ExtResource("7_ykrxr")
+volume_db = -45.0

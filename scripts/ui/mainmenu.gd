@@ -1,11 +1,12 @@
 extends Node2D
 
-
+@onready var click: AudioStreamPlayer2D = $click
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
 func _on_start_pressed() -> void:
+	click.play()
 	$TextureRect.hide()
 	$buttonmanager.hide()
 	get_tree().paused = false
