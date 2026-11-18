@@ -1,6 +1,6 @@
-For Windows: run the assignment-2.exe app file.
+For Windows: run the survivethenight.exe app file.
 
-For MacOS: assignment-2-macos.zip>assignment-2.app>contents>MacOS>assignment-2 
+For MacOS: survivethenight-macos.zip>survivethenight.app>contents>MacOS>survivethenight
 
 
 CONTROLS
