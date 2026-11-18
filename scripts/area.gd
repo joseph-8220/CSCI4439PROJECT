@@ -24,9 +24,13 @@ func _ready() -> void:
 
 
 func onwaveup():
+	if wave == 8:
+		player.score += 500
+		player.money += 150
+		$CanvasLayer/winscreen.win()
 	if wave%3 == 0 and wave != 0:
 		pass
-	mobstospawn = roundi(6 * pow(1.6, wave - 1))
+	mobstospawn = roundi(6 * pow(1.40, wave - 1))
 	if spawn_time > .3:
 		spawn_time -= 0.15
 	print("spawn_time is now " , spawn_time)

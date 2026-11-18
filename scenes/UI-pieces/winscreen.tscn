@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://bt8g1efma32b1"]
+
+[ext_resource type="Script" uid="uid://dq3lxgv1mq763" path="res://scripts/ui/winscreen.gd" id="1_s1hq8"]
+[ext_resource type="FontFile" uid="uid://buku1y8i73ps2" path="res://Space_Mono/SpaceMono-Regular.ttf" id="2_vxq1x"]
+[ext_resource type="FontFile" uid="uid://bf2mddpxyt30x" path="res://Space_Mono/SpaceMono-BoldItalic.ttf" id="3_u0rxk"]
+[ext_resource type="FontFile" uid="uid://c8yu5qgoffkfw" path="res://Space_Mono/SpaceMono-Bold.ttf" id="4_vxq1x"]
+
+[node name="winscreen" type="Control" unique_id=862076912]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+script = ExtResource("1_s1hq8")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1883608248]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -578.0
+offset_top = -324.0
+offset_right = 578.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.61960787, 0, 0.40784314)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=772090383]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -171.0
+offset_top = 41.0
+offset_right = 171.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=501733940]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1854590829]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vxq1x")
+text = "CONTINUE IN ENDLESS MODE"
+
+[node name="RestartButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1637785527]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vxq1x")
+text = "RESTART"
+
+[node name="QuitButton" type="Button" parent="PanelContainer/VBoxContainer" unique_id=464631054]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vxq1x")
+text = "QUIT"
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1509550069]
+layout_mode = 0
+offset_left = -198.0
+offset_top = -265.0
+offset_right = 234.0
+offset_bottom = -135.0
+color = Color(0, 0, 0, 0.40784314)
+
+[node name="ColorRect3" type="ColorRect" parent="." unique_id=511763991]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -108.5
+offset_top = -97.0
+offset_right = 108.5
+offset_bottom = 33.0
+color = Color(0, 0, 0, 0.40784314)
+
+[node name="Label" type="Label" parent="." unique_id=1981510367]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -184.0
+offset_top = -259.0
+offset_right = 184.0
+offset_bottom = -147.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_u0rxk")
+theme_override_font_sizes/font_size = 75
+text = "YOU WIN!"
+horizontal_alignment = 1
+
+[node name="StatLabel" type="Label" parent="." unique_id=2005818218]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.5
+offset_top = -117.0
+offset_right = 108.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_vxq1x")
+text = "SCORE:
+WEAPON:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

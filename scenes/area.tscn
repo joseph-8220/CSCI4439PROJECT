@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://b25e6cl8gvcwr" path="res://sounds/coin.wav" id="6_ueojj"]
 [ext_resource type="AudioStream" uid="uid://0cen2hdnr1iv" path="res://sounds/blocked.wav" id="7_j4i6t"]
 [ext_resource type="AudioStream" uid="uid://dreemed3syjv0" path="res://sounds/click.wav" id="8_8pxb4"]
+[ext_resource type="PackedScene" uid="uid://bt8g1efma32b1" path="res://scenes/UI-pieces/winscreen.tscn" id="10_j4i6t"]
 
 [node name="area" type="Node2D" unique_id=2043200640 groups=["main"]]
 process_mode = 1
@@ -56,6 +57,16 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 
 [node name="click" type="AudioStreamPlayer2D" parent="CanvasLayer/pausemenu" unique_id=1777301394]
+stream = ExtResource("8_8pxb4")
+volume_db = -25.0
+
+[node name="winscreen" parent="CanvasLayer" unique_id=862076912 instance=ExtResource("10_j4i6t")]
+offset_left = 576.0
+offset_top = 324.0
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="click" type="AudioStreamPlayer2D" parent="CanvasLayer/winscreen" unique_id=1014136937]
 stream = ExtResource("8_8pxb4")
 volume_db = -25.0
 
