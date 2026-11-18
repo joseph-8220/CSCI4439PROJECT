@@ -9,10 +9,10 @@ extends CharacterBody2D
 @export var friction_coeff : float = 8
 @export var playerhealth : int = 3
 @export var maxhealth: int = 3
-@export var money : int = 0
+@export var money : int = 1000
 @export var knockback_strength : float = 500
 @export var iframes_duration: float = .5
-@export var weaponid: int = 1
+@export var weaponid: int = 2
 @export var dmgbuffcount: int = 0
 @export var vitbuffcount: int = 0
 @export var spebuffcount: int = 0

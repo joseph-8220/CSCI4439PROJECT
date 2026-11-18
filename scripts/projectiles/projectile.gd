@@ -30,11 +30,13 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		if body in hit_list:
 			return
-		remove_child(hitsound)
-		get_parent().add_child(hitsound)
-		hitsound.global_position = global_position
-		hitsound.play()
-		hitsound.finished.connect(hitsound.queue_free)
+			hit_list.append(body)
+		if is_instance_valid(hitsound):
+			var sound_copy = hitsound.duplicate()
+			get_parent().add_child(sound_copy)
+			sound_copy.global_position = global_position
+			sound_copy.play()
+			sound_copy.finished.connect(sound_copy.queue_free)
 		body.enemyhealth -= damage
 		pierce -= 1
 		if pierce <= 0:
